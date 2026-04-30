@@ -1,5 +1,5 @@
 class Wm < Formula
-  desc "Developer environment intelligence platform — 13 scanners, 24 MCP tools, zero dependencies"
+  desc "Capture, compare, and transfer your complete development environment"
   homepage "https://trywatchmen.cloud"
   version "1.0.11"
   license "MIT"
