@@ -16,7 +16,16 @@ class Wm < Formula
     end
   end
   def install
-    bin.install "wm"
+    # Homebrew follows the CloudFront redirect to a presigned S3 URL and
+    # stages the download under the S3 object basename, not "wm". A prior
+    # `bin.install "wm"` form failed for every release 1.0.13..1.1.3
+    # with ENOENT. Install the actual staged filename per platform.
+    on_macos do
+      bin.install "wm-community-macos-arm64" => "wm"
+    end
+    on_linux do
+      bin.install "wm-community-linux-x86_64" => "wm"
+    end
   end
   test do
     assert_match "WatchmenCLI Community", shell_output("#{bin}/wm version")
