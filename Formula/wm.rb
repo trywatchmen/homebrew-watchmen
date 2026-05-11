@@ -1,18 +1,18 @@
 class Wm < Formula
   desc "Developer environment intelligence platform — 13 scanners, 24 MCP tools, zero dependencies"
   homepage "https://trywatchmen.cloud"
-  version "1.1.7"
+  version "1.1.9"
   license "MIT"
   on_macos do
     on_arm do
       url "https://releases.trywatchmen.cloud/download/community/macos-arm64"
-      sha256 "1a674d6e2d57fb438d70ee01fb32622ded3d8e055b0dcd5e5294ea66766827b2"
+      sha256 "c6d5bdce77d746ad1924592b1cb275327e1e81af9eefad1a99074f73fc175a13"
     end
   end
   on_linux do
     on_intel do
       url "https://releases.trywatchmen.cloud/download/community/linux-x86_64"
-      sha256 "db1facd5c69964a8b40cdc4a3bdfb7ff62eb9fd78ddbb130ccdd112f198d2bc7"
+      sha256 "0b65d5613588de2433f1c8f2b70099714941c42b66e11e5e41cf07b4613d9d00"
     end
   end
   def install
