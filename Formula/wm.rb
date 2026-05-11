@@ -6,7 +6,7 @@ class Wm < Formula
   on_macos do
     on_arm do
       url "https://releases.trywatchmen.cloud/download/community/macos-arm64"
-      sha256 "cb66982d5c307acb3775c1a5610a6d7c1ec6ee1dae02e4c51dd2a47c0b7e6da4"
+      sha256 "1a674d6e2d57fb438d70ee01fb32622ded3d8e055b0dcd5e5294ea66766827b2"
     end
   end
   on_linux do
@@ -16,10 +16,8 @@ class Wm < Formula
     end
   end
   def install
-    # Homebrew follows the CloudFront redirect to a presigned S3 URL and
-    # stages the download under the S3 object basename, not "wm". A prior
-    #  form failed for every release 1.0.13..1.1.3
-    # with ENOENT. Install the actual staged filename per platform.
+    # Homebrew stages the redirected S3 object basename, not the public URL
+    # basename, so install the actual staged filename per platform.
     on_macos do
       bin.install "wm-community-macos-arm64" => "wm"
     end
