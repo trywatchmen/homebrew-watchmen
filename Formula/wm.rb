@@ -1,7 +1,7 @@
 class Wm < Formula
   desc "Developer environment intelligence platform — 13 scanners, 24 MCP tools, zero dependencies"
   homepage "https://trywatchmen.cloud"
-  version "1.1.6"
+  version "1.1.7"
   license "MIT"
   on_macos do
     on_arm do
@@ -12,13 +12,13 @@ class Wm < Formula
   on_linux do
     on_intel do
       url "https://releases.trywatchmen.cloud/download/community/linux-x86_64"
-      sha256 "52b94c12a78cfc6f547a1e9b8b03ee39e90c39dbe910ec875296a46eba60e505"
+      sha256 "db1facd5c69964a8b40cdc4a3bdfb7ff62eb9fd78ddbb130ccdd112f198d2bc7"
     end
   end
   def install
     # Homebrew follows the CloudFront redirect to a presigned S3 URL and
     # stages the download under the S3 object basename, not "wm". A prior
-    # `bin.install "wm"` form failed for every release 1.0.13..1.1.3
+    #  form failed for every release 1.0.13..1.1.3
     # with ENOENT. Install the actual staged filename per platform.
     on_macos do
       bin.install "wm-community-macos-arm64" => "wm"
