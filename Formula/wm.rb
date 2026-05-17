@@ -1,21 +1,27 @@
 class Wm < Formula
   desc "Developer environment intelligence platform — 13 scanners, 24 MCP tools, zero dependencies"
   homepage "https://trywatchmen.cloud"
-  version "1.3.0"
+  version "1.3.3"
   license "MIT"
+  # TH-P0-06 — Versioned, per-platform-pinned URLs.
+  # Versioned URLs make the formula content cryptographically pin
+  # a specific build. Homebrew caches by URL, so when a new version
+  # ships the new formula's URLs break the cache cleanly.
   on_macos do
     on_arm do
-      url "https://releases.trywatchmen.cloud/download/community/1.3.0/macos-arm64"
-      sha256 "ec7f44dfee1be5b8a96f980924ed931c956ceb14cc7f7f2ae6d1ffa32fc3be97"
+      url "https://releases.trywatchmen.cloud/download/community/1.3.3/macos-arm64"
+      sha256 "7f055aba55980326ba5f550aa673516a6bba6b529e22f9c3cedbba67babbc9fc"
     end
   end
   on_linux do
     on_intel do
-      url "https://releases.trywatchmen.cloud/download/community/1.3.0/linux-x86_64"
-      sha256 "ad73a946e6f19dcb6afef3b435e9e8e660f24de3d690c134a64ede3406830092"
+      url "https://releases.trywatchmen.cloud/download/community/1.3.3/linux-x86_64"
+      sha256 "f2659e67731aecccc76840adda3813dbaf45ae956afcd7f15c8beb6e3bd19f17"
     end
   end
   def install
+    # Homebrew stages the redirected S3 object basename, not the public URL
+    # basename, so install the actual staged filename per platform.
     on_macos do
       bin.install "wm-community-macos-arm64" => "wm"
     end
